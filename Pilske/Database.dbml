@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="drankensysteem" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local)\SQLEXPRESS;Initial Catalog=drankensysteem;Integrated Security=True" SettingsObjectName="Pilske.Properties.Settings" SettingsPropertyName="drankensysteemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.hapjes" Member="hapjes">
+    <Type Name="hapje">
+      <Column Name="hid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hapje" Member="hapje1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="hapje_bestelling" Member="bestellings" ThisKey="hid" OtherKey="hid" Type="bestelling" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bieren" Member="bierens">
+    <Type Name="bieren">
+      <Column Name="bid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bier" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="bieren_bestelling" Member="bestellings" ThisKey="bid" OtherKey="bid" Type="bestelling" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bestelling" Member="bestellings">
+    <Type Name="bestelling">
+      <Column Name="bestelid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bestellingsDatum" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="bieren_bestelling" Member="bieren" ThisKey="bid" OtherKey="bid" Type="bieren" IsForeignKey="true" />
+      <Association Name="hapje_bestelling" Member="hapje" ThisKey="hid" OtherKey="hid" Type="hapje" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

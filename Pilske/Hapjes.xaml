@@ -1,0 +1,57 @@
+﻿<Window x:Class="Pilske.Hapjes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pilske"
+        mc:Ignorable="d"
+        Title="Hapjes" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtHapje" HorizontalAlignment="Left" Height="23" Margin="545,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.082,-0.009"/>
+        <TextBlock HorizontalAlignment="Left" Margin="480,33,0,0" TextWrapping="Wrap" Text="Hapje" VerticalAlignment="Top" Width="35"/>
+        <DataGrid x:Name="dgHapjes" HorizontalAlignment="Left" Height="240" Margin="480,155,0,0" VerticalAlignment="Top" Width="245" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding hid}"  Header="Hid"/>
+                <DataGridTextColumn Binding="{Binding hapje1}" Header="Hapje"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button x:Name="btnDelete" Content="Delete" Click="btnDeleteH_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnWijzig" Content="Wijzig" Click="btnWijzigH_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnDoorvoeren" Content="Bestel" Click="btnDoorvoerenH_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dgBestelling" HorizontalAlignment="Left" Height="240" Margin="55,155,0,0" VerticalAlignment="Top" Width="310" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding hapje.hid}"  Header="Hid"/>
+                <DataGridTextColumn Binding="{Binding hapje.hapje1}" Header="Hapje"/>
+                <DataGridTextColumn Binding="{Binding bestelid}" Header="bestelId"/>
+                <DataGridTextColumn Binding="{Binding bestellingsDatum}" Header="BestellingsDatum"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnOpslaanH" Content="Opslaan Hapje
+                " HorizontalAlignment="Left" Margin="590,90,0,0" VerticalAlignment="Top" Width="95" Height="25" Click="BtnOpslaanH_Click"/>
+        <Button x:Name="btnPopulariteitH" Content="Populariteit Hapjes" HorizontalAlignment="Left" Margin="220,105,0,0" VerticalAlignment="Top" Width="115" Height="30" Click="btnPopulariteitH_Click"/>
+
+    </Grid>
+</Window>
